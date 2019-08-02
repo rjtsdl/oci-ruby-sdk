@@ -90,6 +90,7 @@ module OCI
 
         leaf_certificate_pem = @leaf_certificate_supplier.certificate_pem
         request_payload = {
+          'purpose' => 'SERVICE_PRINCIPAL',
           'certificate': OCI::Auth::Util.sanitize_certificate_string(leaf_certificate_pem),
           'publicKey': OCI::Auth::Util.sanitize_certificate_string(@session_key_supplier.key_pair[:public_key].to_pem)
         }
